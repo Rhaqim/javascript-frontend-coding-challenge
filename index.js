@@ -1,5 +1,6 @@
 import Autocomplete from './Autocomplete';
 import usStates from './us-states';
+import getGitHub from './ivan.js';
 import './main.css';
 
 
@@ -17,8 +18,12 @@ new Autocomplete(document.getElementById('state'), {
 
 
 // Github Users
-// new Autocomplete(document.getElementById('gh-user'), {
-//   onSelect: (ghUserId) => {
-//     console.log('selected github user id:', ghUserId);
-//   },
-// });
+const data_two = getGitHub.map(gh_user => ({
+  text: gh_user.login
+}));
+new Autocomplete(document.getElementById('gh_user'), {
+  data_two,
+  onSelect: (ghUserId) => {
+    console.log('selected github user id:', ghUserId);
+  },
+});
